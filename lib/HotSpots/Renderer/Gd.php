@@ -80,7 +80,7 @@ class Gd implements \HotSpots\RendererInterface {
 
         for ($i = 0; $i < $Matrix->getSize('width'); $i++) {
             for ($j = 0; $j < $Matrix->getSize('height'); $j++) {
-                imagesetpixel($this->imageRender, $i, $j, $this->Colors->getColor($this->imageRender, imagecolorat($this->imageRender, $i, $j) & 0xFF));
+                imagesetpixel($this->imageRender, $i, $j, $this->convertColor($this->imageRender, $this->Colors->getColor(imagecolorat($this->imageRender, $i, $j) & 0xFF)));
             }
         }
 
@@ -109,11 +109,15 @@ class Gd implements \HotSpots\RendererInterface {
                 if (!isset($done[$x][$y])) {
                     $previous_channel = @imagecolorat($image, $x, $y) & 0xFF;
                     $new_channel = max(0, min(255, ($previous_channel * $channel) / 255));
-                    imagesetpixel($image, $x, $y, $this->ColorsGrayscale->getColor($this->imageRender, $new_channel));
+                    imagesetpixel($image, $x, $y, $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor($new_channel)));
                     $done[$x][$y] = true;
                 }
             }
         }
+    }
+    
+    private function convertColor($imageResource, \HotSpots\Color $color) {
+        return imagecolorallocatealpha($imageResource, $color->getRed(), $color->getGreen(), $color->getBlue(), $color->getAlpha());
     }
 
 }
