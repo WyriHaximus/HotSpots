@@ -1,0 +1,1 @@
+[![Build Status](https://secure.travis-ci.org/WyriHaximus/HotSpots.png)](http://travis-ci.org/WyriHaximus/HotSpots)
