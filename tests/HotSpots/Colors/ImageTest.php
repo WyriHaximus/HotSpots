@@ -28,7 +28,7 @@ class ImageTest extends \HotSpots\AbtractColorsTest {
     }
 
     public function testGetColor() {
-        $this->image = imagecreatefrompng(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SimpleImages' . DIRECTORY_SEPARATOR . 'Classic.png');
+        $this->image = imagecreatefrompng(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Images' . DIRECTORY_SEPARATOR . 'Classic.png');
         
         for ($channel = 0; $channel < 256; $channel++) {
             $color = $this->Colors->getColor($channel);
@@ -49,7 +49,7 @@ class ImageTest extends \HotSpots\AbtractColorsTest {
         // Overwriting default image used
         unset($this->Colors);
         $this->Colors = new \HotSpots\Colors\Image('ClassicAlpha');
-        $this->image = imagecreatefrompng(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SimpleImages' . DIRECTORY_SEPARATOR . 'ClassicAlpha.png');
+        $this->image = imagecreatefrompng(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Images' . DIRECTORY_SEPARATOR . 'ClassicAlpha.png');
         
         for ($channel = 0; $channel < 256; $channel++) {
             $color = $this->Colors->getColor($channel);

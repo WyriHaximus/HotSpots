@@ -65,4 +65,5 @@ abstract class AbtractColorsTest extends \PHPUnit_Framework_TestCase {
         $this->assertLessThanOrEqual(255, $color->getBlue());
         $this->assertLessThanOrEqual(255, $color->getAlpha());
     }
+    
 }
