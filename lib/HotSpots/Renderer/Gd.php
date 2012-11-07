@@ -25,6 +25,13 @@ class Gd implements \HotSpots\RendererInterface {
      * @var array 
      */
     private $size = array();
+    
+    /**
+     * List of all drawn pixels.
+     * 
+     * @var array 
+     */
+    private $pixels = array();
 
     /**
      * The radius of cells.
@@ -64,30 +71,33 @@ class Gd implements \HotSpots\RendererInterface {
      */
     public function render(\HotSpots\MatrixInterface $Matrix, \HotSpots\WriterInterface $Writer) {
         $this->imageRender = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
-        imagesavealpha($this->imageRender, true);
-        imagealphablending($this->imageRender, false);
-        $colorWhite = imagecolorallocate($this->imageRender, 255, 255, 255);
-        imagefill($this->imageRender, 0, 0, $colorWhite);
-
+        imagefilledrectangle($this->imageRender, 0, 0, ($Matrix->getSize('width') - 1), ($Matrix->getSize('height') - 1), $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor(255)));
+        
         while (($data = $Matrix->next()) !== false) {
-            $this->drawCircularGradient($this->imageRender, array(
+            $this->drawCircularGradient(array(
                 'x' => $data['x'],
                 'y' => $data['y'],
             ), $this->radius);
         }
 
         imagefilter($this->imageRender, IMG_FILTER_GAUSSIAN_BLUR);
-
-        for ($i = 0; $i < $Matrix->getSize('width'); $i++) {
-            for ($j = 0; $j < $Matrix->getSize('height'); $j++) {
-                imagesetpixel($this->imageRender, $i, $j, $this->convertColor($this->imageRender, $this->Colors->getColor(imagecolorat($this->imageRender, $i, $j) & 0xFF)));
+        
+        $this->imageRenderResult = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
+        imagesavealpha($this->imageRenderResult, true);
+        imagealphablending($this->imageRenderResult, false);
+        imagefilledrectangle($this->imageRenderResult, 0, 0, ($Matrix->getSize('width') - 1), ($Matrix->getSize('height') - 1), $this->convertColor($this->imageRenderResult, $this->Colors->getColor(255)));
+        foreach ($this->pixels as $pixel) {
+            list($i, $j) = explode('_', $pixel);
+            if ($i >= 0 && $i < $Matrix->getSize('width') && $j >= 0 && $j < $Matrix->getSize('height')) {
+                imagesetpixel($this->imageRenderResult, $i, $j, $this->convertColor($this->imageRenderResult, $this->Colors->getColor(imagecolorat($this->imageRender, $i, $j) & 0xFF)));
             }
         }
 
         ob_start();
-        imagepng($this->imageRender);
+        imagepng($this->imageRenderResult);
         $Writer->write(ob_get_clean());
         imagedestroy($this->imageRender);
+        imagedestroy($this->imageRenderResult);
     }
 
     /**
@@ -98,7 +108,7 @@ class Gd implements \HotSpots\RendererInterface {
      * @param int $radius Gradient radius
      * @return void
      */
-    private function drawCircularGradient($image, $center, $radius) {
+    private function drawCircularGradient($center, $radius) {
         $done = array();
         for ($r = $radius; $r <= $radius && $r > 0; $r--) {
             $channel = floor((255 / $radius) * $r);
@@ -107,17 +117,40 @@ class Gd implements \HotSpots\RendererInterface {
                 $x = floor($center['x'] + $r * cos($angle));
                 $y = floor($center['y'] + $r * sin($angle));
                 if (!isset($done[$x][$y])) {
-                    $previous_channel = @imagecolorat($image, $x, $y) & 0xFF;
+                    $previous_channel = @imagecolorat($this->imageRender, $x, $y) & 0xFF;
                     $new_channel = max(0, min(255, ($previous_channel * $channel) / 255));
-                    imagesetpixel($image, $x, $y, $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor($new_channel)));
+                    imagesetpixel($this->imageRender, $x, $y, $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor($new_channel)));
                     $done[$x][$y] = true;
+                    $this->addPixelsCluster($x, $y);
                 }
             }
         }
     }
     
+    /*
+     * Convert a color into a resource
+     * 
+     * @param resource $image The image we are creating the color  for
+     * @param \HotSpots\Color $color The color to convert
+     * @return resource
+     */
     private function convertColor($imageResource, \HotSpots\Color $color) {
         return imagecolorallocatealpha($imageResource, $color->getRed(), $color->getGreen(), $color->getBlue(), $color->getAlpha());
+    }
+    
+    /*
+     * Don't just add the supplied pixel but also the ones around it due to the blur applied to the greyscale heatmap.
+     * 
+     * @param int $x X coordinate
+     * @param int $y Y coordinate
+     * @return void
+     */
+    private function addPixelsCluster($x, $y) {
+        for ($i = ($x - 2); $i < ($x + 2); $i++) {
+            for ($j = ($y - 2); $j < ($y + 2); $j++) {
+                $this->pixels[$i . '_' . $j] = $i . '_' . $j;
+            }
+        }
     }
 
 }
