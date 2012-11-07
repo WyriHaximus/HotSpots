@@ -34,7 +34,7 @@ class Gdtest extends \PHPUnit_Framework_TestCase {
         $this->removeDir($this->tmpDir);
     }
     
-    public function testSimpleRender() {
+    public function testImageRender() {
         
         $Matrix = new \HotSpots\Matrix\Simple(new \HotSpots\Cacher\Memory(), array(
             'height' => 256,
@@ -43,7 +43,7 @@ class Gdtest extends \PHPUnit_Framework_TestCase {
         $Renderer = new \HotSpots\Renderer\Gd(array(
             'height' => 256,
             'width' => 256,
-        ), new \HotSpots\Colors\Simple('Classic'), 50);
+        ), new \HotSpots\Colors\Image('Classic'), 50);
         
         $Matrix->push(0, 0, 0);
         $Matrix->push(1, 1, 0);
@@ -55,7 +55,7 @@ class Gdtest extends \PHPUnit_Framework_TestCase {
         $Matrix->push(64, 64, 0);
         $Matrix->push(128, 128, 0);
         $Matrix->push(256, 256, 0);
-
+        
         $Renderer->render($Matrix, new \HotSpots\Writer\File($this->tmpDir . DIRECTORY_SEPARATOR . 'GdTest.png'));
         
         $imGood = imagecreatefrompng(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'GdTest.png');
@@ -80,7 +80,7 @@ class Gdtest extends \PHPUnit_Framework_TestCase {
         imagedestroy($imResult);
     }
     
-    public function testSimpleRenderAlpha() {
+    public function testImageRenderAlpha() {
         
         $Matrix = new \HotSpots\Matrix\Simple(new \HotSpots\Cacher\Memory(), array(
             'height' => 256,
@@ -89,7 +89,7 @@ class Gdtest extends \PHPUnit_Framework_TestCase {
         $Renderer = new \HotSpots\Renderer\Gd(array(
             'height' => 256,
             'width' => 256,
-        ), new \HotSpots\Colors\Simple('ClassicAlpha'), 50);
+        ), new \HotSpots\Colors\Image('ClassicAlpha'), 50);
         
         $Matrix->push(0, 0, 0);
         $Matrix->push(1, 1, 0);
