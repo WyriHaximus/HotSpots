@@ -65,5 +65,15 @@ class ImageTest extends \HotSpots\AbtractColorsTest {
         
         imagedestroy($this->image);
     }
+    
+    
+    /**
+     * @expectedException \HotSpots\Exceptions\FileNotFoundException
+     */
+    public function testNonexistingImage() {
+        // Overwriting default image used
+        unset($this->Colors);
+        $this->Colors = new \HotSpots\Colors\Image('NonexistingImageFile');
+    }
 
 }
