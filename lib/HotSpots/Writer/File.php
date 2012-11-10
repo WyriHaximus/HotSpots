@@ -17,7 +17,7 @@ namespace HotSpots\Writer;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class File implements \HotSpots\WriterInterface {
+class File implements \HotSpots\Interfaces\WriterInterface {
 
     /**
      * Name of the file to be writen
