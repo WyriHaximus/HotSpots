@@ -5,4 +5,4 @@ php:
 branches:
   only:
     - master
-script: phpunit -c phpunit.xml.travisci
+script: phpunit -c phpunit.xml.travisci --coverage-text
