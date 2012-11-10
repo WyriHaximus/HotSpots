@@ -16,8 +16,7 @@ namespace HotSpots\Cacher;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Memory implements \HotSpots\CacherInterface
-{
+class Memory implements \HotSpots\Interfaces\CacherInterface {
     
     /**
      * Cacher data storage

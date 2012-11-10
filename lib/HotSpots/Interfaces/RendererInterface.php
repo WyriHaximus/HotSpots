@@ -27,7 +27,7 @@ interface RendererInterface {
      * @param int $radius Cell radius
      * @return void
      */
-    public function __construct($size, \HotSpots\ColorsInterface $Colors, $radius);
+    public function __construct($size, \HotSpots\Interfaces\ColorsInterface $Colors, $radius);
 
     /**
      * Push a cell into the matrix.
@@ -36,5 +36,5 @@ interface RendererInterface {
      * @param \HotSpots\WriterInterface $Writer Writer to store the result
      * @return void
      */
-    public function render(\HotSpots\MatrixInterface $Matrix, \HotSpots\WriterInterface $Writer);
+    public function render(\HotSpots\Interfaces\MatrixInterface $Matrix, \HotSpots\Interfaces\WriterInterface $Writer);
 }

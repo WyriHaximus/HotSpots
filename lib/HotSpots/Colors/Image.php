@@ -17,7 +17,7 @@ namespace HotSpots\Colors;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Image implements \HotSpots\ColorsInterface {
+class Image implements \HotSpots\Interfaces\ColorsInterface {
 
     /**
      * Store $fileName internaly.

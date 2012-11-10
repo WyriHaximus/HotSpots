@@ -17,7 +17,7 @@ namespace HotSpots\Renderer;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Gd implements \HotSpots\RendererInterface {
+class Gd implements \HotSpots\Interfaces\RendererInterface {
 
     /**
      * Contains the size of the image.
@@ -51,11 +51,11 @@ class Gd implements \HotSpots\RendererInterface {
      * Setup the renderer
      * 
      * @param array $size Image size
-     * @param \HotSpots\ColorsInterface $Colors Image size
+     * @param \HotSpots\Interfaces\ColorsInterface $Colors Image size
      * @param int $radius Cell radius
      * @return void
      */
-    public function __construct($size, \HotSpots\ColorsInterface $Colors, $radius) {
+    public function __construct($size, \HotSpots\Interfaces\ColorsInterface $Colors, $radius) {
         $this->size = $size;
         $this->radius = $radius;
         $this->Colors = $Colors;
@@ -69,7 +69,7 @@ class Gd implements \HotSpots\RendererInterface {
      * @param \HotSpots\WriterInterface $Writer Writer to store the result
      * @return void
      */
-    public function render(\HotSpots\MatrixInterface $Matrix, \HotSpots\WriterInterface $Writer) {
+    public function render(\HotSpots\Interfaces\MatrixInterface $Matrix, \HotSpots\Interfaces\WriterInterface $Writer) {
         $this->imageRender = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
         imagefilledrectangle($this->imageRender, 0, 0, ($Matrix->getSize('width') - 1), ($Matrix->getSize('height') - 1), $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor(255)));
         

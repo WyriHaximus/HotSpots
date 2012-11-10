@@ -17,7 +17,7 @@ namespace HotSpots\Colors;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Grayscale implements \HotSpots\ColorsInterface {
+class Grayscale implements \HotSpots\Interfaces\ColorsInterface {
 
     /**
      * Get the color by the channel (0 - 255).

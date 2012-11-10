@@ -21,7 +21,7 @@ abstract class AbtractColorsTest extends \PHPUnit_Framework_TestCase {
     
     public function testInheritance() {
         $classImplements = class_implements($this->Colors);
-        $this->assertTrue(isset($classImplements['HotSpots\ColorsInterface']));
+        $this->assertTrue(isset($classImplements['HotSpots\Interfaces\ColorsInterface']));
     }
     
     public function testInRangeOutput() {

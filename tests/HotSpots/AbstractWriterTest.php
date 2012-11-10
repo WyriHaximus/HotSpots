@@ -21,6 +21,6 @@ abstract class AbstractWriterTest extends \PHPUnit_Framework_TestCase {
     
     public function testInheritance() {
         $classImplements = class_implements($this->Writer);
-        $this->assertTrue(isset($classImplements['HotSpots\WriterInterface']));
+        $this->assertTrue(isset($classImplements['HotSpots\Interfaces\WriterInterface']));
     }
 }

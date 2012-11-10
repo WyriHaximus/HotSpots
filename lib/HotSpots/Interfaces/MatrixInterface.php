@@ -22,11 +22,11 @@ interface MatrixInterface {
     /**
      * Setup Matrix
      * 
-     * @param \HotSpots\CacherInterface $Cacher Image resource
+     * @param \HotSpots\Interfaces\CacherInterface $Cacher Image resource
      * @param array $size Matrix size
      * @return void
      */
-    public function __construct(\HotSpots\CacherInterface $Cacher, $size);
+    public function __construct(\HotSpots\Interfaces\CacherInterface $Cacher, $size);
 
     /**
      * Push a cell into the matrix.

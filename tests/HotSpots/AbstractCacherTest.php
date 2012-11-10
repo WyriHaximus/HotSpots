@@ -21,7 +21,7 @@ abstract class AbstractCacherTest extends \PHPUnit_Framework_TestCase {
     
     public function testInheritance() {
         $classImplements = class_implements($this->Cacher);
-        $this->assertTrue(isset($classImplements['HotSpots\CacherInterface']));
+        $this->assertTrue(isset($classImplements['HotSpots\Interfaces\CacherInterface']));
     }
     
     public function testInsert() {

@@ -17,16 +17,16 @@ namespace HotSpots\Matrix;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Simple implements \HotSpots\MatrixInterface {
+class Simple implements \HotSpots\Interfaces\MatrixInterface {
 
     /**
      * Setup Matrix
      * 
-     * @param \HotSpots\CacherInterface $Cacher Image resource
+     * @param \HotSpots\InterfacesCacherInterface $Cacher Image resource
      * @param array $size Matrix size
      * @return void
      */
-    public function __construct(\HotSpots\CacherInterface $Cacher, $size) {
+    public function __construct(\HotSpots\Interfaces\CacherInterface $Cacher, $size) {
         $this->Cacher = $Cacher;
         $this->size = $size;
     }
