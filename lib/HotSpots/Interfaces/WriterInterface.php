@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace HotSpots;
+namespace HotSpots\Interfaces;
 
 /**
  * Writes the result render of the HotSpots to a file.
