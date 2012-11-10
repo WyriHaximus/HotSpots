@@ -14,7 +14,7 @@ namespace HotSpots\Coordinates;
 /**
  * Storage for lat, lng pair values.
  *
- * @package StaticMap
+ * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
 final class LatLng {
