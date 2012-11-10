@@ -27,7 +27,7 @@ class Image implements \HotSpots\ColorsInterface {
     public function __construct($gradient) {
         $fileName = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Images' . DIRECTORY_SEPARATOR . $gradient . '.png';
         if (!file_exists($fileName)) {
-            throw new \Exception('File not found: ' . $fileName);
+            throw new \HotSpots\Exceptions\FileNotFoundException('File not found: ' . $fileName);
         }
         $this->image = imagecreatefrompng($fileName);
         $this->colors = array();
