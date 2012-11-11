@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "geokit/geokit": "*",
+        "geokit/geokit": "*"
     },
     "autoload": {
         "psr-0": {
