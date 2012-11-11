@@ -1,0 +1,22 @@
+{
+    "name": "wyrihaximus/hotspots",
+    "description": "HeatMap generation library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com",
+            "homepage": "http://wyrihaximus.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "kriswallsmith/buzz": ">=0.5.0",
+        "geokit/geokit": "*",
+    },
+    "autoload": {
+        "psr-0": {
+            "HotSpots": "lib/"
+        }
+    }
+}
