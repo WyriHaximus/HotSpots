@@ -10,8 +10,9 @@ before_script:
   - php composer.phar update
 script: phpunit -c phpunit.xml.travisci --coverage-text
 notifications:
+  irc: "irc.freenode.org#wyrihaximus"
   webhooks:
-    urls:
+    urls: 
       - http://wyrihaximus.net/wyri_projects/wyri_projects/webhook/travisci.json
     on_success: always
     on_failure: always
