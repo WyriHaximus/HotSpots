@@ -2,7 +2,7 @@
 <phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="HotSpots Test Suite">
-            <directory>tests/HotSpots/</directory>
+            <directory>tests/WyriHaximus/HotSpots/Test/</directory>
         </testsuite>
     </testsuites>
     <filter>

@@ -11,11 +11,14 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "geokit/geokit": "dev-master"
+        "imagine/Imagine": "0.3.*",
+        "geokit/geokit": "dev-master#cc2005b9e6d2b3eddc9fb7c107290061372c4754",
+        "lootils/geo": "*"
     },
     "autoload": {
         "psr-0": {
-            "HotSpots": "lib/"
+            "WyriHaximus\\HotSpots": "src/",
+            "WyriHaximus\\HotSpots\\Test": "tests/"
         }
     }
 }
