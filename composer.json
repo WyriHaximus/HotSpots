@@ -11,9 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "imagine/Imagine": "0.3.*",
-        "geokit/geokit": "dev-master#cc2005b9e6d2b3eddc9fb7c107290061372c4754",
-        "lootils/geo": "*"
+        "ext-gd": "*"
     },
     "autoload": {
         "psr-0": {
