@@ -95,7 +95,7 @@ class ColorTest extends \PHPUnit_Framework_TestCase {
         $this->assertSame(0, $color->getAlpha());
     }
     
-    public function tesOverMax() {
+    public function testOverMax() {
         $color = new \WyriHaximus\HotSpots\Color(256, 257, 258, 128);
         
         $this->assertSame(255, $color->getRed());
