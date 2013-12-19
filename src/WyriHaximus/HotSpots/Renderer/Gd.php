@@ -116,7 +116,7 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
             for ($angle = 0; $angle <= M_PI * 2; $angle += $angle_step) {
                 $x = floor($center['x'] + $r * cos($angle));
                 $y = floor($center['y'] + $r * sin($angle));
-                if ($x >= 0 && $x <= $this->size['width'] && $y >= 0 && $y <= $this->size['height'] && !isset($done[$x][$y])) {
+                if ($x >= 0 && $x < $this->size['width'] && $y >= 0 && $y < $this->size['height'] && !isset($done[$x][$y])) {
                     $previous_channel = @imagecolorat($this->imageRender, $x, $y) & 0xFF;
                     $new_channel = max(0, min(255, ($previous_channel * $channel) / 255));
                     imagesetpixel($this->imageRender, $x, $y, $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor($new_channel)));
