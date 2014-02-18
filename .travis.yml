@@ -1,4 +1,5 @@
 language: php
+
 php:
   - 5.3
   - 5.4
@@ -9,10 +10,13 @@ php:
 branches:
   only:
     - master
+
 before_script:
   - composer self-update
   - composer install
+
 script: php vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
+
 notifications:
   webhooks:
     urls: 
@@ -20,4 +24,5 @@ notifications:
     on_success: always
     on_failure: always
     on_start: true
+
 after_script: php vendor/bin/coveralls
