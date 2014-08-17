@@ -20,6 +20,16 @@ namespace WyriHaximus\HotSpots\Matrix;
 class Simple implements \WyriHaximus\HotSpots\Interfaces\MatrixInterface {
 
     /**
+     * @var \WyriHaximus\HotSpots\Interfaces\CacherInterface
+     */
+    private $Cacher;
+
+    /**
+     * @var array
+     */
+    private $size;
+
+    /**
      * Setup Matrix
      * 
      * @param \WyriHaximus\HotSpots\Interfaces\CacherInterface $Cacher Image resource
