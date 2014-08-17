@@ -39,7 +39,7 @@ class File implements \WyriHaximus\HotSpots\Interfaces\WriterInterface {
      * Writes $data to datastorage.
      * 
      * @param string $data binairy data to be saved.
-     * @return mixed Returns the number of written bytes on succes or false on failure.
+     * @return integer Returns the number of written bytes on succes or false on failure.
      */
     public function write($data) {
         return file_put_contents($this->fileName, $data);

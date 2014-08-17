@@ -23,7 +23,7 @@ interface RendererInterface {
      * Setup the renderer
      * 
      * @param array $size Image size
-     * @param \WyriHaximus\HotSpots\ColorsInterface $Colors Image size
+     * @param ColorsInterface $Colors Image size
      * @param int $radius Cell radius
      * @return void
      */
@@ -32,8 +32,8 @@ interface RendererInterface {
     /**
      * Push a cell into the matrix.
      * 
-     * @param \WyriHaximus\HotSpots\MatrixInterface $Matrix The Matrix contianing the data
-     * @param \WyriHaximus\HotSpots\WriterInterface $Writer Writer to store the result
+     * @param MatrixInterface $Matrix The Matrix contianing the data
+     * @param WriterInterface $Writer Writer to store the result
      * @return void
      */
     public function render(\WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix, \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer);
