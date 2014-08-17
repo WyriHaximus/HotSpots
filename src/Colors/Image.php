@@ -19,13 +19,21 @@ namespace WyriHaximus\HotSpots\Colors;
  */
 class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
+    /**
+     * @var resource
+     */
     private $image;
+
+    /**
+     * @var array
+     */
     private $colors = array();
 
     /**
      * Store $fileName internaly.
      * 
      * @param string $gradient Gradient filename in SimpleImages
+     * @throws \WyriHaximus\HotSpots\Exceptions\FileNotFoundException
      */
     public function __construct($gradient) {
         $fileName = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Images' . DIRECTORY_SEPARATOR . $gradient . '.png';
@@ -38,8 +46,7 @@ class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
     /**
      * Get the color by the channel (0 - 255).
-     * 
-     * @param resource $image Image resource
+     *
      * @param int $channel Color channel
      * @return \WyriHaximus\HotSpots\Color $value value for the cell
      */

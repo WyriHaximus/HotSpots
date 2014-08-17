@@ -19,6 +19,9 @@ namespace WyriHaximus\HotSpots\Colors;
  */
 class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
+    /**
+     * @var array
+     */
     private $colors = array();
 
     /**
