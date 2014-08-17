@@ -19,6 +19,8 @@ namespace WyriHaximus\HotSpots\Colors;
  */
 class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
+    private $colors = array();
+
     /**
      * Get the color by the channel (0 - 255).
      * 
