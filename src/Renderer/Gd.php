@@ -145,6 +145,9 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
      * @param \WyriHaximus\HotSpots\Color $color The color to convert
      * @return resource
      */
+    /**
+     * @param resource $imageResource
+     */
     private function convertColor($imageResource, \WyriHaximus\HotSpots\Color $color) {
         return imagecolorallocatealpha($imageResource, $color->getRed(), $color->getGreen(), $color->getBlue(), $color->getAlpha());
     }

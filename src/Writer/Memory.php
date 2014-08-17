@@ -30,7 +30,7 @@ class Memory implements \WyriHaximus\HotSpots\Interfaces\WriterInterface {
 	 * Writes $data to datastorage.
 	 *
 	 * @param string $data binairy data to be saved.
-	 * @return mixed Returns true on succes or false on failure.
+	 * @return boolean Returns true on succes or false on failure.
 	 */
 	public function write($data) {
 		$this->data = $data;

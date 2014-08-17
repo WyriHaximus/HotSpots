@@ -28,7 +28,7 @@ class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
      * Get the color by the channel (0 - 255).
      * 
      * @param int $channel Color channel
-     * @return mixed Returns a \WyriHaximus\HotSpots\Color $value value for the cell if it is in range otherwise it returns false
+     * @return \WyriHaximus\HotSpots\Color Returns a \WyriHaximus\HotSpots\Color $value value for the cell if it is in range otherwise it returns false
      */
     public function getColor($channel) {
         $channel = (int) $channel;

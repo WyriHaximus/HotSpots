@@ -25,6 +25,7 @@ interface CacherInterface {
      * @param int $x x coordinate
      * @param int $y y coordinate
      * @param int $value value for the cell
+     * @return void
      */
     public function push($x, $y, $value);
 
@@ -51,6 +52,7 @@ interface CacherInterface {
 
     /**
      * Reset the cacher.
+     * @return void
      */
     public function reset();
 }

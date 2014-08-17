@@ -48,7 +48,8 @@ interface MatrixInterface {
     /**
      * Get the Matrix's size
      * 
-     * @return mixed Matrix size
+     * @param string $type
+     * @return integer Matrix size
      */
     public function getSize($type = null);
 }
