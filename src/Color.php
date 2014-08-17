@@ -62,7 +62,7 @@ final class Color {
     
     /**
      * Set the value for the color red and returns the stored value
-     * @param type $red 
+     * @param int $red
      * @return int 
      */
     public function setRed($red) {
@@ -80,7 +80,7 @@ final class Color {
     
     /**
      * Set the value for the color green and returns the stored value
-     * @param type $green 
+     * @param int $green
      * @return int 
      */
     public function setGreen($green) {
@@ -98,7 +98,7 @@ final class Color {
     
     /**
      * Set the value for the color blue and returns the stored value
-     * @param type $blue 
+     * @param int $blue
      * @return int 
      */
     public function setBlue($blue) {
@@ -116,7 +116,7 @@ final class Color {
     
     /**
      * Set the value for the alpha channel and returns the stored value
-     * @param type $alpha 
+     * @param int $alpha
      * @return int 
      */
     public function setAlpha($alpha) {
