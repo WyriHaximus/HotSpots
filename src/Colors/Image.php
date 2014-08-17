@@ -19,6 +19,9 @@ namespace WyriHaximus\HotSpots\Colors;
  */
 class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
+    private $image;
+    private $colors = array();
+
     /**
      * Store $fileName internaly.
      * 
