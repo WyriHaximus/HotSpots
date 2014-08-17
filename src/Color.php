@@ -139,15 +139,7 @@ final class Color {
      * @return int Sanitized and correctly forced color value 
      */
     private function sanitizeColor($value) {
-        $value = (int) $value;
-        
-        if ($value < 0) {
-            $value = 0;
-        } else if ($value > 255) {
-            $value = 255;
-        }
-        
-        return $value;
+        return $this->sanitize($value, 255);
     }
     
     /**
@@ -157,16 +149,25 @@ final class Color {
      * @return int Sanitized and correctly forced alpha value 
      */
     private function sanitizeAlpha($value) {
+        return $this->sanitize($value, 127);
+    }
+
+    /**
+     * @param int $value
+     * @param int $max
+     *
+     * @return int
+     */
+    private function sanitize($value, $max) {
         $value = (int) $value;
-        
+
         if ($value < 0) {
             $value = 0;
-        } else if ($value > 127) {
-            $value = 127;
+        } else if ($value > $max) {
+            $value = $max;
         }
-        
+
         return $value;
     }
-    
 
 }
