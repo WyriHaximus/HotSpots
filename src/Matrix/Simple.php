@@ -22,9 +22,8 @@ class Simple implements \WyriHaximus\HotSpots\Interfaces\MatrixInterface {
     /**
      * Setup Matrix
      * 
-     * @param \WyriHaximus\HotSpots\InterfacesCacherInterface $Cacher Image resource
+     * @param \WyriHaximus\HotSpots\Interfaces\CacherInterface $Cacher Image resource
      * @param array $size Matrix size
-     * @return void
      */
     public function __construct(\WyriHaximus\HotSpots\Interfaces\CacherInterface $Cacher, $size) {
         $this->Cacher = $Cacher;
@@ -53,9 +52,9 @@ class Simple implements \WyriHaximus\HotSpots\Interfaces\MatrixInterface {
     }
 
     /**
-     * Get the Matrix's size
-     * 
-     * @return mixed Matrix size
+     * @param null $type
+     *
+     * @return array|mixed
      */
     public function getSize($type = null) {
         if (is_null($type)) {
