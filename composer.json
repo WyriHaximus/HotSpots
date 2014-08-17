@@ -19,7 +19,11 @@
     },
     "autoload": {
         "psr-4": {
-            "WyriHaximus\\HotSpots\\": "src/",
+            "WyriHaximus\\HotSpots\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "WyriHaximus\\HotSpots\\Tests\\": "tests/"
         }
     }
