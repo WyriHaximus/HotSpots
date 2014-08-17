@@ -27,14 +27,6 @@ class Memory implements \WyriHaximus\HotSpots\Interfaces\WriterInterface {
 	private $data;
 
 	/**
-	 * Store $fileName internaly.
-	 *
-	 * @param string $fileName Name of the file to be writen
-	 */
-	public function __construct($fileName) {
-	}
-
-	/**
 	 * Writes $data to datastorage.
 	 *
 	 * @param string $data binairy data to be saved.
