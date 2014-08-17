@@ -43,9 +43,24 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
     /**
      * The Colorer that is used to convert from grayscale.
      * 
-     * @var int
+     * @var \WyriHaximus\HotSpots\Interfaces\ColorsInterface
      */
     private $Colors = null;
+
+    /**
+     * @var null|\WyriHaximus\HotSpots\Colors\Grayscale
+     */
+    private $ColorsGrayscale = null;
+
+    /**
+     * @var resource
+     */
+    private $imageRender;
+
+    /**
+     * @var resource
+     */
+    private $imageRenderResult;
 
     /**
      * Setup the renderer
@@ -53,7 +68,6 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
      * @param array $size Image size
      * @param \WyriHaximus\HotSpots\Interfaces\ColorsInterface $Colors Image size
      * @param int $radius Cell radius
-     * @return void
      */
     public function __construct($size, \WyriHaximus\HotSpots\Interfaces\ColorsInterface $Colors, $radius) {
         $this->size = $size;
@@ -65,9 +79,8 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
     /**
      * Push a cell into the matrix.
      * 
-     * @param \WyriHaximus\HotSpots\MatrixInterface $Matrix The Matrix contianing the data
-     * @param \WyriHaximus\HotSpots\WriterInterface $Writer Writer to store the result
-     * @return void
+     * @param \WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix The Matrix contianing the data
+     * @param \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer Writer to store the result
      */
     public function render(\WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix, \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer) {
         $this->imageRender = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
@@ -102,11 +115,9 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
 
     /**
      * Draw the gradient on the image in grascale.
-     * 
-     * @param resource $image The image we are editing
+     *
      * @param array $center Cell center
      * @param int $radius Gradient radius
-     * @return void
      */
     private function drawCircularGradient($center, $radius) {
         $done = array();
