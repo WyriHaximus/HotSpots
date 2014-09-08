@@ -17,8 +17,8 @@ namespace WyriHaximus\HotSpots\Colors;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
-
+class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface
+{
     /**
      * @var resource
      */
@@ -31,11 +31,12 @@ class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
     /**
      * Store $fileName internaly.
-     * 
+     *
      * @param string $gradient Gradient filename in SimpleImages
      * @throws \WyriHaximus\HotSpots\Exceptions\FileNotFoundException
      */
-    public function __construct($gradient) {
+    public function __construct($gradient)
+    {
         $fileName = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Images' . DIRECTORY_SEPARATOR . $gradient . '.png';
         if (!file_exists($fileName)) {
             throw new \WyriHaximus\HotSpots\Exceptions\FileNotFoundException('File not found: ' . $fileName);
@@ -50,17 +51,18 @@ class Image implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
      * @param int $channel Color channel
      * @return \WyriHaximus\HotSpots\Color $value value for the cell
      */
-    public function getColor($channel) {
+    public function getColor($channel)
+    {
         $channel = (int) $channel;
-        
+
         if ($channel > 255 || $channel < 0) {
             return false;
         }
-        
+
         if (!isset($this->colors[$channel])) {
             $rgb = @imagecolorat($this->image, 255 - $channel, 0);
             $colors = imagecolorsforindex($this->image, $rgb);
-            
+
             $this->colors[$channel] = new \WyriHaximus\HotSpots\Color($colors['red'], $colors['green'], $colors['blue'], $colors['alpha']);
         }
 

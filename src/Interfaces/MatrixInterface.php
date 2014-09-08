@@ -17,11 +17,11 @@ namespace WyriHaximus\HotSpots\Interfaces;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-interface MatrixInterface {
-    
+interface MatrixInterface
+{
     /**
      * Setup Matrix
-     * 
+     *
      * @param \WyriHaximus\HotSpots\Interfaces\CacherInterface $Cacher Image resource
      * @param array $size Matrix size
      * @return void
@@ -30,24 +30,24 @@ interface MatrixInterface {
 
     /**
      * Push a cell into the matrix.
-     * 
+     *
      * @param int $x x coordinate
      * @param int $y y coordinate
      * @param int $value cell value
      * @return void
      */
     public function push($x, $y, $value);
-    
+
     /**
      * Get the data for the next cell from the cacher
-     * 
+     *
      * @return mixed Cell data from cacher
      */
     public function next();
 
     /**
      * Get the Matrix's size
-     * 
+     *
      * @param string $type
      * @return integer Matrix size
      */

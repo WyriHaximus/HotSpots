@@ -17,11 +17,11 @@ namespace WyriHaximus\HotSpots\Interfaces;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-interface WriterInterface {
-    
+interface WriterInterface
+{
     /**
      * Writes $data to datastorage.
-     * 
+     *
      * @param string $data binairy data to be saved.
      */
     public function write($data);

@@ -17,32 +17,32 @@ namespace WyriHaximus\HotSpots\Renderer;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
-
+class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface
+{
     /**
      * Contains the size of the image.
-     * 
-     * @var array 
+     *
+     * @var array
      */
     private $size = array();
-    
+
     /**
      * List of all drawn pixels.
-     * 
-     * @var array 
+     *
+     * @var array
      */
     private $pixels = array();
 
     /**
      * The radius of cells.
-     * 
+     *
      * @var int
      */
     private $radius = 30;
 
     /**
      * The Colorer that is used to convert from grayscale.
-     * 
+     *
      * @var \WyriHaximus\HotSpots\Interfaces\ColorsInterface
      */
     private $Colors = null;
@@ -64,12 +64,13 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
 
     /**
      * Setup the renderer
-     * 
+     *
      * @param array $size Image size
      * @param \WyriHaximus\HotSpots\Interfaces\ColorsInterface $Colors Image size
      * @param int $radius Cell radius
      */
-    public function __construct($size, \WyriHaximus\HotSpots\Interfaces\ColorsInterface $Colors, $radius) {
+    public function __construct($size, \WyriHaximus\HotSpots\Interfaces\ColorsInterface $Colors, $radius)
+    {
         $this->size = $size;
         $this->radius = $radius;
         $this->Colors = $Colors;
@@ -78,14 +79,15 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
 
     /**
      * Push a cell into the matrix.
-     * 
+     *
      * @param \WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix The Matrix contianing the data
      * @param \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer Writer to store the result
      */
-    public function render(\WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix, \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer) {
+    public function render(\WyriHaximus\HotSpots\Interfaces\MatrixInterface $Matrix, \WyriHaximus\HotSpots\Interfaces\WriterInterface $Writer)
+    {
         $this->imageRender = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
         imagefilledrectangle($this->imageRender, 0, 0, ($Matrix->getSize('width') - 1), ($Matrix->getSize('height') - 1), $this->convertColor($this->imageRender, $this->ColorsGrayscale->getColor(255)));
-        
+
         while (($data = $Matrix->next()) !== false) {
             $this->drawCircularGradient(array(
                 'x' => $data['x'],
@@ -94,7 +96,7 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
         }
 
         imagefilter($this->imageRender, IMG_FILTER_GAUSSIAN_BLUR);
-        
+
         $this->imageRenderResult = imagecreatetruecolor($Matrix->getSize('width'), $Matrix->getSize('height'));
         imagesavealpha($this->imageRenderResult, true);
         imagealphablending($this->imageRenderResult, false);
@@ -119,7 +121,8 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
      * @param array $center Cell center
      * @param int $radius Gradient radius
      */
-    private function drawCircularGradient($center, $radius) {
+    private function drawCircularGradient($center, $radius)
+    {
         $done = array();
         for ($r = $radius; $r <= $radius && $r > 0; $r--) {
             $channel = floor((255 / $radius) * $r);
@@ -137,10 +140,10 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
             }
         }
     }
-    
+
     /*
      * Convert a color into a resource
-     * 
+     *
      * @param resource $image The image we are creating the color  for
      * @param \WyriHaximus\HotSpots\Color $color The color to convert
      * @return resource
@@ -148,18 +151,20 @@ class Gd implements \WyriHaximus\HotSpots\Interfaces\RendererInterface {
     /**
      * @param resource $imageResource
      */
-    private function convertColor($imageResource, \WyriHaximus\HotSpots\Color $color) {
+    private function convertColor($imageResource, \WyriHaximus\HotSpots\Color $color)
+    {
         return imagecolorallocatealpha($imageResource, $color->getRed(), $color->getGreen(), $color->getBlue(), $color->getAlpha());
     }
-    
+
     /*
      * Don't just add the supplied pixel but also the ones around it due to the blur applied to the greyscale heatmap.
-     * 
+     *
      * @param int $x X coordinate
      * @param int $y Y coordinate
      * @return void
      */
-    private function addPixelsCluster($x, $y) {
+    private function addPixelsCluster($x, $y)
+    {
         for ($i = ($x - 2); $i < ($x + 2); $i++) {
             for ($j = ($y - 2); $j < ($y + 2); $j++) {
                 $this->pixels[$i . '_' . $j] = $i . '_' . $j;

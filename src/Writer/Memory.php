@@ -17,29 +17,31 @@ namespace WyriHaximus\HotSpots\Writer;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Memory implements \WyriHaximus\HotSpots\Interfaces\WriterInterface {
+class Memory implements \WyriHaximus\HotSpots\Interfaces\WriterInterface
+{
+    /**
+     * The data to be readed after the renderer has written to it
+     *
+     * @var string
+     */
+    private $data;
 
-	/**
-	 * The data to be readed after the renderer has written to it
-	 *
-	 * @var string
-	 */
-	private $data;
+    /**
+     * Writes $data to datastorage.
+     *
+     * @param string $data binairy data to be saved.
+     * @return boolean Returns true on succes or false on failure.
+     */
+    public function write($data)
+    {
+        $this->data = $data;
+        return true;
+    }
 
-	/**
-	 * Writes $data to datastorage.
-	 *
-	 * @param string $data binairy data to be saved.
-	 * @return boolean Returns true on succes or false on failure.
-	 */
-	public function write($data) {
-		$this->data = $data;
-		return true;
-	}
-
-	public function read() {
-		return $this->data;
-	}
+    public function read()
+    {
+        return $this->data;
+    }
 
 
 

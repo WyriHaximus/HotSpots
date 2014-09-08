@@ -17,11 +17,11 @@ namespace WyriHaximus\HotSpots\Interfaces;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-interface RendererInterface {
-
+interface RendererInterface
+{
     /**
      * Setup the renderer
-     * 
+     *
      * @param array $size Image size
      * @param ColorsInterface $Colors Image size
      * @param int $radius Cell radius
@@ -31,7 +31,7 @@ interface RendererInterface {
 
     /**
      * Push a cell into the matrix.
-     * 
+     *
      * @param MatrixInterface $Matrix The Matrix contianing the data
      * @param WriterInterface $Writer Writer to store the result
      * @return void

@@ -17,11 +17,11 @@ namespace WyriHaximus\HotSpots\Interfaces;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-interface ColorsInterface {
-
+interface ColorsInterface
+{
     /**
      * Get the color by the channel (0 - 255).
-     * 
+     *
      * @param int $channel Color channel
      * @return \WyriHaximus\HotSpots\Color $value value for the cell
      */

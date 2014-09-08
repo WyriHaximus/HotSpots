@@ -17,8 +17,8 @@ namespace WyriHaximus\HotSpots\Colors;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
-
+class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface
+{
     /**
      * @var array
      */
@@ -26,17 +26,18 @@ class Grayscale implements \WyriHaximus\HotSpots\Interfaces\ColorsInterface {
 
     /**
      * Get the color by the channel (0 - 255).
-     * 
+     *
      * @param int $channel Color channel
      * @return \WyriHaximus\HotSpots\Color Returns a \WyriHaximus\HotSpots\Color $value value for the cell if it is in range otherwise it returns false
      */
-    public function getColor($channel) {
+    public function getColor($channel)
+    {
         $channel = (int) $channel;
-        
+
         if ($channel > 255 || $channel < 0) {
             return false;
         }
-        
+
         if (!isset($this->colors[$channel])) {
             $this->colors[$channel] = new \WyriHaximus\HotSpots\Color($channel, $channel, $channel, 0);
         }
