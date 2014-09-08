@@ -17,31 +17,33 @@ namespace WyriHaximus\HotSpots\Writer;
  * @package HotSpots
  * @author  Cees-Jan Kiewiet <ceesjank@gmail.com>
  */
-class File implements \WyriHaximus\HotSpots\Interfaces\WriterInterface {
-
+class File implements \WyriHaximus\HotSpots\Interfaces\WriterInterface
+{
     /**
      * Name of the file to be writen
-     * 
-     * @var string 
+     *
+     * @var string
      */
     private $fileName = '';
 
     /**
      * Store $fileName internaly.
-     * 
+     *
      * @param string $fileName Name of the file to be writen
      */
-    public function __construct($fileName) {
+    public function __construct($fileName)
+    {
         $this->fileName = $fileName;
     }
 
     /**
      * Writes $data to datastorage.
-     * 
+     *
      * @param string $data binairy data to be saved.
      * @return integer Returns the number of written bytes on succes or false on failure.
      */
-    public function write($data) {
+    public function write($data)
+    {
         return file_put_contents($this->fileName, $data);
     }
 
