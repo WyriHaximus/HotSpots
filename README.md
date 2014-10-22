@@ -8,14 +8,10 @@ HotSpots is a heatmap image generation library.
 
 ## Installation ##
 
-Installation is easy with composer just add HotSpots to your composer.json.
+To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `~`.
 
-```json
-{
-	"require": {
-		"wyrihaximus/hotspots": "dev-master"
-	}
-}
+```
+composer require wyrihaximus/hotspots 
 ```
 
 ## Basic usage ##
